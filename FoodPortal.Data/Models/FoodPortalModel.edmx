@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FoodOrderingDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FoodOrderingDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="CartId" />
@@ -46,11 +46,12 @@
           <Key>
             <PropertyRef Name="ProductId" />
           </Key>
-          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Category" Type="nvarchar(max)" />
           <Property Name="Price" Type="real" />
           <Property Name="Offer" Type="bit" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="Vendors">
           <Key>
@@ -141,8 +142,7 @@
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FoodOrderingDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -195,6 +195,7 @@
           <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Single" />
           <Property Name="Offer" Type="Boolean" />
+          <Property Name="Quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -250,13 +251,13 @@
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <FunctionImport Name="deleteCarts">
-            <Parameter Name="cartid" Mode="In" Type="Int32" />
+          <Parameter Name="cartid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="deleteProducts">
-            <Parameter Name="productId" Mode="In" Type="Int32" />
+          <Parameter Name="productId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="deleteVendors">
-            <Parameter Name="vendorId" Mode="In" Type="String" />
+          <Parameter Name="vendorId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="upsertCarts">
             <Parameter Name="clientid" Mode="In" Type="String" />
@@ -336,6 +337,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="FoodOrderingDbModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Category" ColumnName="Category" />

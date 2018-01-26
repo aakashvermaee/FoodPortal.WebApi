@@ -41,11 +41,12 @@
     <Key>
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" />
     <Property Name="Category" Type="nvarchar(max)" />
     <Property Name="Price" Type="real" />
     <Property Name="Offer" Type="bit" />
+    <Property Name="Quantity" Type="int" />
   </EntityType>
   <EntityType Name="Vendors">
     <Key>

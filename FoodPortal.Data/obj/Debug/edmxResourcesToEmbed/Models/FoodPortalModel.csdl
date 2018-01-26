@@ -49,6 +49,7 @@
     <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Single" />
     <Property Name="Offer" Type="Boolean" />
+    <Property Name="Quantity" Type="Int32" />
   </EntityType>
   <EntityType Name="Vendor">
     <Key>
