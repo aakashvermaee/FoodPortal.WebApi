@@ -35,7 +35,7 @@ namespace FoodPortal.Controllers {
         [HttpPost]
         public JsonResult<List<Product>> SearchProduct(Product product) {
             List<Product> searchProductDb = db.Products
-                                              .Where(P => P.Name.Equals(product.Name))
+                                              .Where(P => P.Name.Contains(product.Name))
                                               .ToList();
             //if (searchProductDb != null)
                 return Json(searchProductDb);
