@@ -11,8 +11,13 @@ namespace FoodPortal.Controllers {
     {
         private FoodOrderingDbEntities db;
 
-        public ClientsController() {
+        public ClientsController()
+        {
             this.db = new FoodOrderingDbEntities();
+        }
+
+        public ClientsController(FoodOrderingDbEntities _db) {
+            db = _db;
         }
 
         [HttpPost]
@@ -49,7 +54,7 @@ namespace FoodPortal.Controllers {
             if (clientEmail != null)
                 return Json("Email ID Exists!");
             else
-                return Json("");
+                return Json("Email ID can be used");
         }
 
         [HttpPost]

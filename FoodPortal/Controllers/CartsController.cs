@@ -9,9 +9,13 @@ namespace FoodPortal.Controllers {
     //[EnableCors(origins: "*", methods: "*", headers: "*")]
     public class CartsController : ApiController
     {
-        private FoodOrderingDbEntities db = null;
-        public CartsController() {
+        private FoodOrderingDbEntities db;
+        public CartsController()
+        {
             this.db = new FoodOrderingDbEntities();
+        }
+        public CartsController(FoodOrderingDbEntities _db) {
+            db = _db;
         }
 
         [HttpPost]

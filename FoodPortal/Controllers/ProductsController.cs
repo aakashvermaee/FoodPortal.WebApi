@@ -14,8 +14,13 @@ namespace FoodPortal.Controllers {
         //DbContext Class
         private FoodOrderingDbEntities db;
 
-        public ProductsController() {
+        public ProductsController()
+        {
             this.db = new FoodOrderingDbEntities();
+        }
+
+        public ProductsController(FoodOrderingDbEntities _db) {
+            db = _db;
         }
 
         [HttpGet]

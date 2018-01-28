@@ -8,9 +8,13 @@ namespace FoodPortal.Controllers {
     public class VendorsController : ApiController
     {
         private FoodOrderingDbEntities db;
-
-        public VendorsController() {
+        public VendorsController()
+        {
             this.db = new FoodOrderingDbEntities();
+        }
+
+        public VendorsController(FoodOrderingDbEntities _db) {
+            db = _db;
         }
 
         [HttpPost]
