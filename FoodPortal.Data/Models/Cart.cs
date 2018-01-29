@@ -14,17 +14,9 @@ namespace FoodPortal.Data.Models
     
     public partial class Cart
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cart()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int CartId { get; set; }
         public string ClientId { get; set; }
         public Nullable<int> ProductId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public Nullable<int> Quantity { get; set; }
     }
 }

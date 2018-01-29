@@ -7,6 +7,7 @@
     <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientId" Type="nvarchar" MaxLength="50" />
     <Property Name="ProductId" Type="int" />
+    <Property Name="Quantity" Type="int" />
   </EntityType>
   <EntityType Name="Cart2">
     <Key>
@@ -31,11 +32,10 @@
     <Key>
       <PropertyRef Name="OrderId" />
     </Key>
-    <Property Name="OrderId" Type="int" Nullable="false" />
-    <Property Name="CartId" Type="int" />
-    <Property Name="VendorId" Type="nvarchar" MaxLength="50" />
-    <Property Name="Payment" Type="bit" />
-    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Payment" Type="int" Nullable="false" />
+    <Property Name="Payment Mode" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -59,32 +59,6 @@
     <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="Contact" Type="nvarchar(max)" />
   </EntityType>
-  <Association Name="FK_Orders_Cart">
-    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cart">
-        <PropertyRef Name="CartId" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="CartId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Vendors">
-    <End Role="Vendors" Type="Self.Vendors" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Vendors">
-        <PropertyRef Name="VendorId" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="VendorId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="deleteCarts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cartid" Type="int" Mode="In" />
   </Function>
@@ -128,13 +102,5 @@
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Orders_Cart" Association="Self.FK_Orders_Cart">
-      <End Role="Cart" EntitySet="Cart" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Vendors" Association="Self.FK_Orders_Vendors">
-      <End Role="Vendors" EntitySet="Vendors" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

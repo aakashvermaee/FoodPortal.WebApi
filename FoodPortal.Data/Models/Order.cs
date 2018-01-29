@@ -15,12 +15,8 @@ namespace FoodPortal.Data.Models
     public partial class Order
     {
         public int OrderId { get; set; }
-        public Nullable<int> CartId { get; set; }
-        public string VendorId { get; set; }
-        public Nullable<bool> Payment { get; set; }
-        public string Status { get; set; }
-    
-        public virtual Cart Cart { get; set; }
-        public virtual Vendor Vendor { get; set; }
+        public string username { get; set; }
+        public int Payment { get; set; }
+        public string Payment_Mode { get; set; }
     }
 }

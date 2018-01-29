@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Web.Http.Results;
 
 namespace FoodPortal.Controllers {
@@ -63,6 +62,16 @@ namespace FoodPortal.Controllers {
                 }
             }
             return false;
+        }
+
+        [HttpPost]
+        public JsonResult<string> PostQuantity(Cart cart) {
+            var v = (from c in db.Carts
+                    where c.ProductId == cart.ProductId && c.ClientId.Equals(cart.ClientId)
+                    select c).ToList();
+            v.First().Quantity = cart.Quantity;
+            db.SaveChanges();
+            return Json("success");
         }
 
         [HttpDelete]

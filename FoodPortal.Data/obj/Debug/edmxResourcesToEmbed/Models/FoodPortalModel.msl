@@ -7,6 +7,7 @@
           <ScalarProperty Name="CartId" ColumnName="CartId" />
           <ScalarProperty Name="ClientId" ColumnName="ClientId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -35,22 +36,21 @@
       <EntityTypeMapping TypeName="FoodOrderingDbModel.Order">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="CartId" ColumnName="CartId" />
-          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="Payment" ColumnName="Payment" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Payment_Mode" ColumnName="Payment Mode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="FoodOrderingDbModel.Product">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Offer" ColumnName="Offer" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

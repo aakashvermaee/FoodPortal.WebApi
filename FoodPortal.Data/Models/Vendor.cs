@@ -14,20 +14,11 @@ namespace FoodPortal.Data.Models
     
     public partial class Vendor
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Vendor()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public string VendorId { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
         public string Contact { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -7,7 +7,7 @@
     <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClientId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ProductId" Type="Int32" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Cart" FromRole="Cart" ToRole="Orders" />
+    <Property Name="Quantity" Type="Int32" />
   </EntityType>
   <EntityType Name="Cart2">
     <Key>
@@ -32,19 +32,16 @@
     <Key>
       <PropertyRef Name="OrderId" />
     </Key>
-    <Property Name="OrderId" Type="Int32" Nullable="false" />
-    <Property Name="CartId" Type="Int32" />
-    <Property Name="VendorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Payment" Type="Boolean" />
-    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Cart" Relationship="Self.FK_Orders_Cart" FromRole="Orders" ToRole="Cart" />
-    <NavigationProperty Name="Vendor" Relationship="Self.FK_Orders_Vendors" FromRole="Orders" ToRole="Vendors" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payment" Type="Int32" Nullable="false" />
+    <Property Name="Payment_Mode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Single" />
@@ -61,34 +58,7 @@
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Vendors" FromRole="Vendors" ToRole="Orders" />
   </EntityType>
-  <Association Name="FK_Orders_Cart">
-    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cart">
-        <PropertyRef Name="CartId" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="CartId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Vendors">
-    <End Role="Vendors" Type="Self.Vendor" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Vendors">
-        <PropertyRef Name="VendorId" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="VendorId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="FoodOrderingDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Carts" EntityType="Self.Cart" />
     <EntitySet Name="Cart2" EntityType="Self.Cart2" />
@@ -96,14 +66,6 @@
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="Vendors" EntityType="Self.Vendor" />
-    <AssociationSet Name="FK_Orders_Cart" Association="Self.FK_Orders_Cart">
-      <End Role="Cart" EntitySet="Carts" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Vendors" Association="Self.FK_Orders_Vendors">
-      <End Role="Vendors" EntitySet="Vendors" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
     <FunctionImport Name="deleteCarts">
       <Parameter Name="cartid" Mode="In" Type="Int32" />
     </FunctionImport>

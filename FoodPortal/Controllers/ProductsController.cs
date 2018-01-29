@@ -39,12 +39,13 @@ namespace FoodPortal.Controllers {
 
         [HttpPost]
         public JsonResult<List<Product>> SearchProduct(Product product) {
+            if (product.Name.Equals("")) {
+                return Json(new List<Product>(0));
+            }
             List<Product> searchProductDb = db.Products
                                               .Where(P => P.Name.Contains(product.Name))
                                               .ToList();
-            //if (searchProductDb != null)
-                return Json(searchProductDb);
-            //return null;
+            return Json(searchProductDb);
         }
 
         [HttpPost]
@@ -77,14 +78,13 @@ namespace FoodPortal.Controllers {
             } catch (System.Exception e) { }
             return Json(product.Name + "Failed!");
         }
+
+        [HttpPost]
+        public JsonResult<List<Product>> CheckQuantity(Product product) {
+            List<Product> p = (from P in db.Products
+                                where P.Quantity <= product.Quantity
+                                select P).ToList();
+            return Json(p);
+        }
     }
 }
-
-//[HttpGet]
-//[ResponseType(typeof(JsonResult<string>))]
-//public JsonResult<string> GetProductId(int? id) {
-//    int _id = ((from PId in db.Products
-//                   select PId).ToList().Last().ProductId);
-//    _id++;
-//    return Json(_id.ToString());
-//}
