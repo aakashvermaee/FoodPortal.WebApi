@@ -34,9 +34,15 @@ namespace FoodPortal.Controllers {
 
         [HttpPost]
         public JsonResult<string> ReduceQuantity(Cart cart) {
+            Product product = new Product();
             var x = db.Carts.Where(n => n.ProductId == cart.ProductId && n.ClientId.Equals(cart.ClientId));
             var changeqty = db.Products.Where(n => n.ProductId == x.FirstOrDefault().ProductId);
             changeqty.FirstOrDefault().Quantity -= cart.Quantity;
+            Product updatedQty = db.Products.Find(x.FirstOrDefault().ProductId);
+            if (updatedQty.Quantity == 0)
+            {
+                db.Products.Remove(updatedQty);
+            }
             db.SaveChanges();
             return Json("changed qty!");
         }
