@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\aakash.verma\source\repos\git_akashverma1992\FoodPortal\FoodPortal.Data\Models\FoodPortalModel.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\cyber group projects\FoodPortal.WebApi\FoodPortal.Data\Models\FoodPortalModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

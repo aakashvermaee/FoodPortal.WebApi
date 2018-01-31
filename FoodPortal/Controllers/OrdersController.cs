@@ -13,20 +13,20 @@ namespace FoodPortal.Controllers {
 
         [HttpPost]
         public JsonResult<string> PostOrder(Order order) {
-            var existsUserName = (from o in db.Orders
-                                 where o.username.Equals(order.username)
-                                 select o).ToList();
-            var obj = existsUserName.First();
+            //var existsUserName = (from o in db.Orders
+            //                     where o.username.Equals(order.username)
+            //                     select o).ToList();
+            //var obj = existsUserName.First();
 
-            if (existsUserName != null) {
-                if (obj.username.Equals(order.username)) {
-                    obj.Payment = order.Payment;
-                    obj.Payment_Mode = order.Payment_Mode;
-                    //db.Orders.Add(obj);
-                    db.SaveChanges();
-                    return Json("Order Changed!");
-                }
-            }
+            //if (existsUserName != null) {
+            //    if (obj.username.Equals(order.username)) {
+            //        obj.Payment = order.Payment;
+            //        obj.Payment_Mode = order.Payment_Mode;
+            //        //db.Orders.Add(obj);
+            //        db.SaveChanges();
+            //        return Json("Order Changed!");
+            //    }
+            //}
             db.Orders.Add(order);
             db.SaveChanges();
             return Json("Order Placed!");

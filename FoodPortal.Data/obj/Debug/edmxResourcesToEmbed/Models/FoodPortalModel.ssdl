@@ -36,6 +36,7 @@
     <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Payment" Type="int" Nullable="false" />
     <Property Name="Payment Mode" Type="nvarchar(max)" />
+    <Property Name="ProductId" Type="int" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -47,6 +48,7 @@
     <Property Name="Price" Type="real" />
     <Property Name="Offer" Type="bit" />
     <Property Name="Quantity" Type="int" />
+    <Property Name="Image" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Vendors">
     <Key>

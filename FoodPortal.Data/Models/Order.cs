@@ -18,5 +18,6 @@ namespace FoodPortal.Data.Models
         public string username { get; set; }
         public int Payment { get; set; }
         public string Payment_Mode { get; set; }
+        public Nullable<int> ProductId { get; set; }
     }
 }

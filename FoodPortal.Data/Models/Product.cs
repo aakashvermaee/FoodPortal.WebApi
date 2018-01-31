@@ -20,5 +20,6 @@ namespace FoodPortal.Data.Models
         public Nullable<float> Price { get; set; }
         public Nullable<bool> Offer { get; set; }
         public Nullable<int> Quantity { get; set; }
+        public string Image { get; set; }
     }
 }

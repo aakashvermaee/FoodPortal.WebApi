@@ -35,6 +35,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="FoodOrderingDbModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="Payment" ColumnName="Payment" />
@@ -45,6 +46,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="FoodOrderingDbModel.Product">
         <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Category" ColumnName="Category" />

@@ -36,6 +36,7 @@
     <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Payment" Type="Int32" Nullable="false" />
     <Property Name="Payment_Mode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductId" Type="Int32" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -47,6 +48,7 @@
     <Property Name="Price" Type="Single" />
     <Property Name="Offer" Type="Boolean" />
     <Property Name="Quantity" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Vendor">
     <Key>
